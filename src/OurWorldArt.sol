@@ -134,4 +134,15 @@ contract OurWorldArt is ERC721, ERC721URIStorage, Ownable {
     {
         return super.supportsInterface(interfaceId);
     }
+    
+    function getMatrix() public view returns (uint24[] memory) {
+        uint24[] memory flatMatrix = new uint24[](MATRIX_SIZE * MATRIX_SIZE);
+        uint k = 0;
+        for (uint i = 0; i < MATRIX_SIZE; i++) {
+            for (uint j = 0; j < MATRIX_SIZE; j++) {
+                flatMatrix[k++] = matrix[i][j];
+            }
+        }
+        return flatMatrix;
+    }
 }
